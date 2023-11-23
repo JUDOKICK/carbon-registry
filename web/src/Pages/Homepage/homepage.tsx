@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import sliderLogo from '../../Assets/Images/logo-slider.png';
+import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import undpLogo from '../../Assets/Images/undp1.svg';
 import EBRD from '../../Assets/Images/EBRD.webp';
 import EBRDff from '../../Assets/Images/EBRD.png';
@@ -65,15 +66,15 @@ const Homepage = () => {
               <Col md={18} lg={21} xs={17} flex="auto">
                 <div className="homepage-header-container">
                   <div className="logo">
-                    <img src={sliderLogo} alt="slider-logo" />
+                    <img src={bitmoLogo} alt="slider-logo" />
                   </div>
                   <div>
                     <div style={{ display: 'flex' }}>
-                      <div className="title">{'CARBON'}</div>
-                      <div className="title-sub">{'REGISTRY'}</div>
+                      <div className="title">{'BITMO'}</div>
+                      <div className="title-sub">{'PLATFORM'}</div>
                     </div>
                     <div className="country-name">
-                      {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+                      {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
                     </div>
                   </div>
                 </div>
