@@ -84,7 +84,7 @@ const Homepage = () => {
                 <div className="homepage-button-container">
                   <div className="button">
                     <Button type="primary" onClick={() => navigate('/login')}>
-                      SIGN IN
+                      Login
                     </Button>
                   </div>
                 </div>

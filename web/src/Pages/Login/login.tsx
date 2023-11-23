@@ -2,7 +2,7 @@ import { Button, Col, Form, Input, message, Row, Select, Spin } from 'antd';
 import React, { FC, Suspense, useContext, useEffect, useState } from 'react';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
 import './login.scss';
-import countryLogo from '../../Assets/Images/logo-slider.png';
+import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useUserContext } from '../../Context/UserInformationContext/userInformationContext';
@@ -114,7 +114,7 @@ const Login: FC<LoginPageProps> = (props: LoginPageProps) => {
                   <Col lg={{ span: 9, offset: 15 }} md={{ span: 24 }} flex="auto">
                     <div className="login-country-logo">
                       <img
-                        src={countryLogo}
+                        src={bitmoLogo}
                         alt="country-logo"
                         onClick={() => {
                           navigate('/');
@@ -123,12 +123,12 @@ const Login: FC<LoginPageProps> = (props: LoginPageProps) => {
                     </div>
                     <div className="login-country-name">
                       <div className="title">
-                        {'CARBON'}
-                        <span className="title-sub">{'REGISTRY'}</span>
+                        {'BITMO'}
+                        <span className="title-sub">{'PLATFORM'}</span>
                       </div>
 
                       <span className="country-name">
-                        {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+                        {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
                       </span>
                     </div>
                   </Col>
@@ -235,6 +235,7 @@ const Login: FC<LoginPageProps> = (props: LoginPageProps) => {
                               htmlType="submit"
                               block
                               loading={loading}
+                              className="login-btn"
                             >
                               {t('common:login')}
                             </Button>
