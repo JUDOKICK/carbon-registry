@@ -1,6 +1,7 @@
 import { Col, Divider, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import sliderLogo from '../../Assets/Images/logo-slider.png';
+import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import './layout.footer.scss';
 import { CcCircle } from 'react-bootstrap-icons';
 
@@ -13,15 +14,15 @@ const LayoutFooter = () => {
         <Col md={24} lg={24}>
           <div className="logocontainer">
             <div className="logo">
-              <img src={sliderLogo} alt="slider-logo" />
+              <img src={bitmoLogo} alt="slider-logo" />
             </div>
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{'CARBON'}</div>
-                <div className="title-sub">{'REGISTRY'}</div>
+                <div className="title">{'BITMO'}</div>
+                <div className="title-sub">{'PLATFORM'}</div>
               </div>
               <div className="footer-country-name">
-                {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+                {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
               </div>
             </div>
           </div>
@@ -36,7 +37,7 @@ const LayoutFooter = () => {
       <Row>
         <Col md={10} lg={10}>
           <div className="footertext-bottom">
-            {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+            {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
             <CcCircle className="cc" color="#FFFF" size="10px" />
           </div>
         </Col>
