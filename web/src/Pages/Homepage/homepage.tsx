@@ -92,7 +92,7 @@ const Homepage = () => {
             <Row>
               <div className="text-ctn">
                 <span>
-                  {t('homepage:national')} {t('homepage:carbon')} <br />
+                  {t('homepage:BITMO')} {t('homepage:carbon')} <br />
                   {t('homepage:registry')}
                 </span>
                 <div className="subhome">{t('homepage:lorem')}</div>
