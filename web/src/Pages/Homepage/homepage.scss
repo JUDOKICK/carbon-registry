@@ -100,15 +100,16 @@
         rgba(255, 255, 255, 0.3) 10%,
         rgba(22, 177, 255, 0.4) 40%
       ),
-      url('../../Assets/Images/factory.webp');
+      url('../../Assets/Images/splash_image.jpeg');
     background-image: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.3) 10%,
         rgba(22, 177, 255, 0.4) 40%
       ),
       image-set(
-        '../../Assets/Images/factory.png' type('image/png'),
-        '../../Assets/Images/factory.webp' type('image/webp')
+        '../../Assets/Images/splash_image.jpeg'
+        /*'../../Assets/Images/factory.png' type('image/png'),
+        '../../Assets/Images/factory.webp' type('image/webp')*/
       );
     background-size: cover;
   }
