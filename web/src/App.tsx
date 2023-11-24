@@ -82,17 +82,18 @@ const App = () => {
                 <Route path="cookie" element={<CookiePolicy />} />
                 <Route path="terms" element={<TermsOfUse />} />
                 <Route path="/" element={<Homepage />} />
+
+                <Route path="/dashboard" element={<CustomLayout selectedKey="dashboard" />}>
+                  <Route index element={<Dashboard />} />
+                </Route>
+                <Route
+                  path="/programmeManagement"
+                  element={<CustomLayout selectedKey="programmeManagement/viewAll" />}
+                >
+                  <Route path="viewAll" element={<ProgrammeManagement />} />
+                  <Route path="view/:id" element={<ProgrammeView />} />
+                </Route>
                 <Route path="/" element={<PrivateRoute />}>
-                  <Route path="/dashboard" element={<CustomLayout selectedKey="dashboard" />}>
-                    <Route index element={<Dashboard />} />
-                  </Route>
-                  <Route
-                    path="/programmeManagement"
-                    element={<CustomLayout selectedKey="programmeManagement/viewAll" />}
-                  >
-                    <Route path="viewAll" element={<ProgrammeManagement />} />
-                    <Route path="view/:id" element={<ProgrammeView />} />
-                  </Route>
                   <Route
                     path="/companyManagement"
                     element={<CustomLayout selectedKey="companyManagement/viewAll" />}

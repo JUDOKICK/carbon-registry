@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, Layout, MenuProps } from 'antd';
-import sliderLogo from '../../Assets/Images/logo-slider.png';
+import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import './layout.sider.scss';
 import * as Icon from 'react-bootstrap-icons';
@@ -71,13 +71,13 @@ const LayoutSider = (props: LayoutSiderProps) => {
           onClick={() => navigate('/dashboard', { replace: true })}
         >
           <div className="logo">
-            <img src={sliderLogo} alt="slider-logo" />
+            <img src={bitmoLogo} alt="slider-logo" />
           </div>
           {!collapsed && (
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{collapsed ? '' : 'CARBON'}</div>
-                <div className="title-sub">{collapsed ? '' : 'REGISTRY'}</div>
+                <div className="title">{collapsed ? '' : 'BITMO'}</div>
+                <div className="title-sub">{collapsed ? '' : 'PLATFORM'}</div>
               </div>
               <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}</div>
             </div>
