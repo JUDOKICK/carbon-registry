@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import sliderLogo from '../../Assets/Images/logo-slider.png';
 import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import undpLogo from '../../Assets/Images/undp1.svg';
 import EBRD from '../../Assets/Images/EBRD.webp';
