@@ -123,12 +123,14 @@ const Login: FC<LoginPageProps> = (props: LoginPageProps) => {
                     </div>
                     <div className="login-country-name">
                       <div className="title">
-                        {'BITMO'}
-                        <span className="title-sub">{'PLATFORM'}</span>
+                        {process.env.REACT_APP_PRIMARY_NAME || 'CARBON'}
+                        <span className="title-sub">
+                          {process.env.REACT_APP_SECONDARY_NAME || 'REGISTRY'}
+                        </span>
                       </div>
 
                       <span className="country-name">
-                        {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
+                        {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
                       </span>
                     </div>
                   </Col>

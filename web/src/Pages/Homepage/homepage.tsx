@@ -71,11 +71,13 @@ const Homepage = () => {
                   </div>
                   <div>
                     <div style={{ display: 'flex' }}>
-                      <div className="title">{'BITMO'}</div>
-                      <div className="title-sub">{'PLATFORM'}</div>
+                      <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'BITMO'}</div>
+                      <div className="title-sub">
+                        {process.env.REACT_APP_SECONDARY_NAME || 'PLATFORM'}
+                      </div>
                     </div>
                     <div className="country-name">
-                      {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
+                      {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
                     </div>
                   </div>
                 </div>
