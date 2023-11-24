@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import sliderLogo from '../../Assets/Images/logo-slider.png';
+import bitmoLogo from '../../Assets/Images/bitmo_logo.svg';
 import './termsofUse.scss';
 import LayoutFooter from '../../Components/Footer/layout.footer';
 import { CcCircle } from 'react-bootstrap-icons';
@@ -26,12 +26,14 @@ const TermsOfUse = () => {
         <Col md={24} lg={24}>
           <div onClick={() => navigate('/')} className="term-header-container">
             <div className="logo">
-              <img src={sliderLogo} alt="slider-logo" />
+              <img src={bitmoLogo} alt="slider-logo" />
             </div>
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{'CARBON'}</div>
-                <div className="title-sub">{'REGISTRY'}</div>
+                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'CARBON'}</div>
+                <div className="title-sub">
+                  {process.env.REACT_APP_SECONDARY_NAME || 'REGISTRY'}
+                </div>
               </div>
               <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}</div>
             </div>
