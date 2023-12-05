@@ -1,5 +1,6 @@
-name: Deploy Front end in S3
+name: Deploy Front end in S3 (Prod)
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
