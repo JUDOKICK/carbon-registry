@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REACT_APP_BACKEND: https://api.carbreg.org
-      REACT_APP_COUNTRY_NAME: 'UNDP Digital Public Good National'
-      REACT_APP_COUNTRY_FLAG_URL: 'https://carbon-common-prod.s3.amazonaws.com/flag.png'
-      COUNTRY_CODE: 'NG'
+      REACT_APP_COUNTRY_NAME: "BITMO UNDP"
+      REACT_APP_COUNTRY_FLAG_URL: 'https://carbon-common-bitmo.s3.us-east-2.amazonaws.com/Flag_of_Canada.svg.png'
+      COUNTRY_CODE: 'CA'
       REACT_APP_MAPBOXGL_ACCESS_TOKEN: ${{ secrets.MAPBOXGL_ACCESS_TOKEN }}
       REACT_APP_MAP_TYPE : "Mapbox"
     steps:
