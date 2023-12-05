@@ -16,10 +16,10 @@ jobs:
   deploy_front_end:
     runs-on: ubuntu-latest
     env:
-      REACT_APP_BACKEND: https://14p5hndhcf.execute-api.us-east-1.amazonaws.com/dev
-      COUNTRY_NAME: 'CountryX'
-      COUNTRY_FLAG_URL: 'https://carbon-common-dev.s3.amazonaws.com/flag.png'
-      COUNTRY_CODE: 'NG'
+      REACT_APP_BACKEND: https://14p5hndhcf.execute-api.us-east-2.amazonaws.com/dev
+      COUNTRY_NAME: 'Canada'
+      COUNTRY_FLAG_URL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/320px-Flag_of_Canada.svg.png'
+      COUNTRY_CODE: 'CA'
       REACT_APP_MAPBOXGL_ACCESS_TOKEN: ${{ secrets.MAPBOXGL_ACCESS_TOKEN }}
       REACT_APP_MAP_TYPE : "Mapbox"
     steps:
@@ -42,7 +42,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-2
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v3
       #   with:
@@ -85,10 +85,10 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd repos/carbon-registry &&
-            sudo $(aws ecr get-login --no-include-email --region us-east-1) &&
+            sudo $(aws ecr get-login --no-include-email --region us-east-2) &&
             sudo docker stop carbon-registry-web-1 || true &&
             sudo docker rm carbon-registry-web-1 &&
-            sudo docker pull 302213478610.dkr.ecr.us-east-1.amazonaws.com/carbon-web:v1 &&
+            sudo docker pull 302213478610.dkr.ecr.us-east-2.amazonaws.com/carbon-web:v1 &&
             docker compose -f docker-compose-image.yml up -d web '
       - name: Build, tag, and push the QA-develop image to Amazon ECR
         id: build-image-develop

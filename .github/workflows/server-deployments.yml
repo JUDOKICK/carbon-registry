@@ -17,7 +17,7 @@ concurrency:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION: us-east-1
+  AWS_DEFAULT_REGION: us-east-2
 
 jobs:
   check_dependency_change:
@@ -114,8 +114,8 @@ jobs:
       #   run: yarn install --frozen-lockfile
       # - name: version
       #   run: |
-      #     echo "ARN1=$(aws lambda list-layer-versions --layer-name service-dependencies-${{ needs.check_dependency_change.outputs.stage }}-1 --region us-east-1 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
-      #     echo "ARN2=$(aws lambda list-layer-versions --layer-name service-dependencies-${{ needs.check_dependency_change.outputs.stage }}-2 --region us-east-1 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
+      #     echo "ARN1=$(aws lambda list-layer-versions --layer-name service-dependencies-${{ needs.check_dependency_change.outputs.stage }}-1 --region us-east-2 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
+      #     echo "ARN2=$(aws lambda list-layer-versions --layer-name service-dependencies-${{ needs.check_dependency_change.outputs.stage }}-2 --region us-east-2 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
       #   id: layerArn
       # - name: Build Serial Generator Package
       #   working-directory: ./libs/serial-number-gen
@@ -141,7 +141,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-2
       - name: Login to Amazon ECR
         if: github.ref == 'refs/heads/develop'
         id: login-ecr
@@ -172,10 +172,10 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd repos/carbon-registry &&
-            sudo $(aws ecr get-login --no-include-email --region us-east-1) &&
+            sudo $(aws ecr get-login --no-include-email --region us-east-2) &&
             sudo docker stop carbon-registry-national-1  carbon-registry-replicator-1 carbon-registry-stats-1 || true &&
             sudo docker rm carbon-registry-national-1  carbon-registry-replicator-1 carbon-registry-stats-1 &&
-            sudo docker pull 302213478610.dkr.ecr.us-east-1.amazonaws.com/carbon-services:develop &&
+            sudo docker pull 302213478610.dkr.ecr.us-east-2.amazonaws.com/carbon-services:develop &&
             docker compose -f docker-compose-image.yml up -d national stats replicator '
 
   # automated-api-tests:
