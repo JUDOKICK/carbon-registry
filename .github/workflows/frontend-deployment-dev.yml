@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+      - bitmo-ui
     paths:
       - web/**
       - .github/workflows/frontend*
