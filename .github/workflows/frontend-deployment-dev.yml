@@ -91,7 +91,7 @@ jobs:
             sudo docker stop carbon-registry-web-1 || true &&
             sudo docker rm carbon-registry-web-1 &&
             sudo docker pull 871964278013.dkr.ecr.us-east-2.amazonaws.com/carbon-web:v1 &&
-            docker compose -f docker-compose-image.yml up -d web '
+            docker-compose -f docker-compose-image.yml up -d web '
       - name: Build, tag, and push the QA-develop image to Amazon ECR
         id: build-image-develop
         env:
