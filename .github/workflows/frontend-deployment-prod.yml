@@ -1,8 +1,10 @@
-name: Deploy Front end in S3
+name: Deploy Front end in S3 (Prod)
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+      - bitmo-ui
     paths:
       - web/**
 
@@ -11,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REACT_APP_BACKEND: https://api.carbreg.org
-      REACT_APP_COUNTRY_NAME: 'UNDP Digital Public Good National'
-      REACT_APP_COUNTRY_FLAG_URL: 'https://carbon-common-prod.s3.amazonaws.com/flag.png'
-      COUNTRY_CODE: 'NG'
+      REACT_APP_COUNTRY_NAME: "BITMO UNDP"
+      REACT_APP_COUNTRY_FLAG_URL: 'https://carbon-common-bitmo.s3.us-east-2.amazonaws.com/Flag_of_Canada.svg.png'
+      COUNTRY_CODE: 'CA'
       REACT_APP_MAPBOXGL_ACCESS_TOKEN: ${{ secrets.MAPBOXGL_ACCESS_TOKEN }}
       REACT_APP_MAP_TYPE : "Mapbox"
     steps:
@@ -30,7 +32,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:

@@ -1,24 +1,37 @@
-name: Deploy Front end in S3
+name: Deploy Front end in S3 (Dev)
 on:
+  workflow_dispatch:
   push:
     branches:
       - develop
+      - bitmo-ui
     paths:
       - web/**
       - .github/workflows/frontend*
+      - docker-compose*
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy_front_end:
     runs-on: ubuntu-latest
     env:
-      REACT_APP_BACKEND: https://14p5hndhcf.execute-api.us-east-1.amazonaws.com/dev
-      COUNTRY_NAME: 'CountryX'
-      COUNTRY_FLAG_URL: 'https://carbon-common-dev.s3.amazonaws.com/flag.png'
-      COUNTRY_CODE: 'NG'
+      REACT_APP_BACKEND: https://14p5hndhcf.execute-api.us-east-2.amazonaws.com/dev
+      COUNTRY_NAME: 'Canada'
+      COUNTRY_FLAG_URL: 'https://carbon-common-bitmo.s3.us-east-2.amazonaws.com/Flag_of_Canada.svg.png'
+      COUNTRY_CODE: 'CA'
       REACT_APP_MAPBOXGL_ACCESS_TOKEN: ${{ secrets.MAPBOXGL_ACCESS_TOKEN }}
       REACT_APP_MAP_TYPE : "Mapbox"
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 5
+      - name: Check Docker variable changes
+        run: |
+          echo "docker-compose file Change...."
+          git diff HEAD~ -- HEAD -z ./docker-compose*
       # - name: Cache modules
       #   uses: actions/cache@v1
       #   id: yarn-cache
@@ -31,7 +44,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-2
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v3
       #   with:
@@ -57,12 +70,12 @@ jobs:
           IMAGE_TAG: v1
         run: |
           # Build a docker container and push it to ECR 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f web/Dockerfile . --build-arg PORT=3030 --build-arg REACT_APP_BACKEND=https://test.carbreg.org:3000 --build-arg REACT_APP_STAT_URL=https://test.carbreg.org:3100 --build-arg COUNTRY_NAME="CountryX" --build-arg COUNTRY_FLAG_URL="https://carbon-common-dev.s3.amazonaws.com/flag.png" --build-arg COUNTRY_CODE="NG" --build-arg REACT_APP_MAP_TYPE="Mapbox" --build-arg REACT_APP_MAPBOXGL_ACCESS_TOKEN=${{ secrets.MAPBOXGL_ACCESS_TOKEN }}  --build-arg NGINX_CONFIG="nginx_prod.conf"
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f web/Dockerfile . --build-arg PORT=3030 --build-arg REACT_APP_BACKEND=https://test.carbreg.org:3000 --build-arg REACT_APP_STAT_URL=https://test.carbreg.org:3100 --build-arg COUNTRY_NAME="Canada" --build-arg COUNTRY_FLAG_URL="https://carbon-common-bitmo.s3.us-east-2.amazonaws.com/Flag_of_Canada.svg.png" --build-arg COUNTRY_CODE="CA" --build-arg REACT_APP_MAP_TYPE="Mapbox" --build-arg REACT_APP_MAPBOXGL_ACCESS_TOKEN=${{ secrets.MAPBOXGL_ACCESS_TOKEN }}  --build-arg NGINX_CONFIG="nginx_prod.conf"
           echo "Pushing image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
       - name: Deploy docker image to Amazon EC2
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/bitmo-ui'
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: carbon-web
@@ -74,11 +87,11 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd repos/carbon-registry &&
-            sudo $(aws ecr get-login --no-include-email --region us-east-1) &&
+            sudo $(aws ecr get-login --no-include-email --region us-east-2) &&
             sudo docker stop carbon-registry-web-1 || true &&
             sudo docker rm carbon-registry-web-1 &&
-            sudo docker pull 302213478610.dkr.ecr.us-east-1.amazonaws.com/carbon-web:v1 &&
-            docker compose -f docker-compose-image.yml up -d web '
+            sudo docker pull 871964278013.dkr.ecr.us-east-2.amazonaws.com/carbon-web:v1 &&
+            docker-compose -f docker-compose-image.yml up -d web '
       - name: Build, tag, and push the QA-develop image to Amazon ECR
         id: build-image-develop
         env:
@@ -87,7 +100,7 @@ jobs:
           IMAGE_TAG: develop
         run: |
           # Build a docker container and push it to ECR 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f web/Dockerfile . --build-arg PORT=3030 --build-arg REACT_APP_BACKEND=http://localhost:3000 --build-arg REACT_APP_STAT_URL=http://localhost:3100 --build-arg COUNTRY_NAME="CountryX" --build-arg COUNTRY_FLAG_URL="https://carbon-common-dev.s3.amazonaws.com/flag.png" --build-arg COUNTRY_CODE="NG" --build-arg REACT_APP_MAP_TYPE="Mapbox" --build-arg REACT_APP_MAPBOXGL_ACCESS_TOKEN=${{ secrets.MAPBOXGL_ACCESS_TOKEN }} 
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f web/Dockerfile . --build-arg PORT=3030 --build-arg REACT_APP_BACKEND=http://localhost:3000 --build-arg REACT_APP_STAT_URL=http://localhost:3100 --build-arg COUNTRY_NAME="Canada" --build-arg COUNTRY_FLAG_URL="hhttps://carbon-common-bitmo.s3.us-east-2.amazonaws.com/Flag_of_Canada.svg.png" --build-arg COUNTRY_CODE="CA" --build-arg REACT_APP_MAP_TYPE="Mapbox" --build-arg REACT_APP_MAPBOXGL_ACCESS_TOKEN=${{ secrets.MAPBOXGL_ACCESS_TOKEN }} 
           echo "Pushing image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
