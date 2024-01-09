@@ -30,12 +30,12 @@ const CookiePolicy = () => {
             </div>
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'CARBON'}</div>
+                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'BITMO'}</div>
                 <div className="title-sub">
                   {process.env.REACT_APP_SECONDARY_NAME || 'REGISTRY'}
                 </div>
               </div>
-              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}</div>
+              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'Canada'}</div>
             </div>
           </div>
         </Col>
@@ -46,7 +46,7 @@ const CookiePolicy = () => {
             <div className="cookietitle">SAMPLE COOKIE POLICY</div>
             <div className="cookie-sub">Last updated February 02, 2023</div>
             <div className="cookie-body">
-              This Cookie Policy explains how {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'} (
+              This Cookie Policy explains how {process.env.REACT_APP_COUNTRY_NAME || 'Canada'} (
               <b>"Company"</b>, "<b>we</b>", "<b>us</b>", and "<b>our</b>") uses cookies and similar
               technologies to recognize you when you visit our websites at{' '}
               <a target="_blank" href="https://carbreg.org">
@@ -70,7 +70,7 @@ const CookiePolicy = () => {
               websites work, or to work more efficiently, as well as to provide reporting
               information.
               <br /> Cookies set by the website owner (in this case,{' '}
-              {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}) are called "first party cookies".
+              {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}) are called "first party cookies".
               Cookies set by parties other than the website owner are called "third party cookies".
               Third party cookies enable third party features or functionality to be provided on or
               through the website (e.g. like advertising, interactive content and analytics). The
@@ -618,7 +618,7 @@ const CookiePolicy = () => {
               <br />
               <br />
               <br />
-              {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+              {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
               <br />1 United Nations Plaza
               <br />
               New York, New York

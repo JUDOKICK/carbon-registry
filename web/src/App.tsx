@@ -82,52 +82,53 @@ const App = () => {
                 <Route path="cookie" element={<CookiePolicy />} />
                 <Route path="terms" element={<TermsOfUse />} />
                 <Route path="/" element={<Homepage />} />
+
+                <Route path="/dashboard" element={<CustomLayout selectedKey="dashboard" />}>
+                  <Route index element={<Dashboard />} />
+                </Route>
+                <Route
+                  path="/programmeManagement"
+                  element={<CustomLayout selectedKey="programmeManagement/viewAll" />}
+                >
+                  <Route path="viewAll" element={<ProgrammeManagement />} />
+                  <Route path="view/:id" element={<ProgrammeView />} />
+                </Route>
+                <Route
+                  path="/companyManagement"
+                  element={<CustomLayout selectedKey="companyManagement/viewAll" />}
+                >
+                  <Route path="viewAll" element={<CompanyManagement />} />
+                  <Route path="addCompany" element={<AddNewCompany />} />
+                  <Route path="updateCompany" element={<AddNewCompany />} />
+                </Route>
+                <Route
+                  path="/userManagement"
+                  element={<CustomLayout selectedKey="userManagement/viewAll" />}
+                >
+                  <Route path="viewAll" element={<UserManagement />} />
+                  <Route path="addUser" element={<AddUser />} />
+                  <Route path="updateUser" element={<AddUser />} />
+                </Route>
+                <Route
+                  path="/creditTransfers"
+                  element={<CustomLayout selectedKey="creditTransfers/viewAll" />}
+                >
+                  <Route path="viewAll" element={<CreditTransfers />} />
+                  {/* <Route path="view" element={<ProgrammeView />} /> */}
+                </Route>
+                <Route
+                  path="/userProfile"
+                  element={<CustomLayout selectedKey="userManagement/viewAll" />}
+                >
+                  <Route path="view" element={<UserProfile />} />
+                </Route>
+                <Route
+                  path="/companyProfile"
+                  element={<CustomLayout selectedKey="companyManagement/viewAll" />}
+                >
+                  <Route path="view" element={<CompanyProfile />} />
+                </Route>
                 <Route path="/" element={<PrivateRoute />}>
-                  <Route path="/dashboard" element={<CustomLayout selectedKey="dashboard" />}>
-                    <Route index element={<Dashboard />} />
-                  </Route>
-                  <Route
-                    path="/programmeManagement"
-                    element={<CustomLayout selectedKey="programmeManagement/viewAll" />}
-                  >
-                    <Route path="viewAll" element={<ProgrammeManagement />} />
-                    <Route path="view/:id" element={<ProgrammeView />} />
-                  </Route>
-                  <Route
-                    path="/companyManagement"
-                    element={<CustomLayout selectedKey="companyManagement/viewAll" />}
-                  >
-                    <Route path="viewAll" element={<CompanyManagement />} />
-                    <Route path="addCompany" element={<AddNewCompany />} />
-                    <Route path="updateCompany" element={<AddNewCompany />} />
-                  </Route>
-                  <Route
-                    path="/userManagement"
-                    element={<CustomLayout selectedKey="userManagement/viewAll" />}
-                  >
-                    <Route path="viewAll" element={<UserManagement />} />
-                    <Route path="addUser" element={<AddUser />} />
-                    <Route path="updateUser" element={<AddUser />} />
-                  </Route>
-                  <Route
-                    path="/creditTransfers"
-                    element={<CustomLayout selectedKey="creditTransfers/viewAll" />}
-                  >
-                    <Route path="viewAll" element={<CreditTransfers />} />
-                    {/* <Route path="view" element={<ProgrammeView />} /> */}
-                  </Route>
-                  <Route
-                    path="/userProfile"
-                    element={<CustomLayout selectedKey="userManagement/viewAll" />}
-                  >
-                    <Route path="view" element={<UserProfile />} />
-                  </Route>
-                  <Route
-                    path="/companyProfile"
-                    element={<CustomLayout selectedKey="companyManagement/viewAll" />}
-                  >
-                    <Route path="view" element={<CompanyProfile />} />
-                  </Route>
                   {/* <Route
                       path="/userManagement"
                       element={<CustomLayout selectedKey="userManagement" />}

@@ -25,12 +25,12 @@ const CarbonHelp = () => {
             </div>
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'CARBON'}</div>
+                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'BITMO'}</div>
                 <div className="title-sub">
                   {process.env.REACT_APP_SECONDARY_NAME || 'REGISTRY'}
                 </div>
               </div>
-              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}</div>
+              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'Canada'}</div>
             </div>
           </div>
         </Col>

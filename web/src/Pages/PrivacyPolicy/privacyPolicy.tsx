@@ -30,12 +30,12 @@ const PrivacyPolicy = () => {
             </div>
             <div>
               <div style={{ display: 'flex' }}>
-                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'CARBON'}</div>
+                <div className="title">{process.env.REACT_APP_PRIMARY_NAME || 'BITMO'}</div>
                 <div className="title-sub">
                   {process.env.REACT_APP_SECONDARY_NAME || 'REGISTRY'}
                 </div>
               </div>
-              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}</div>
+              <div className="country-name">{process.env.REACT_APP_COUNTRY_NAME || 'Canada'}</div>
             </div>
           </div>
         </Col>
@@ -46,7 +46,7 @@ const PrivacyPolicy = () => {
             <div className="privacytitle">SAMPLE PRIVACY NOTICE</div>
             <div className="privacy-sub">Last updated February 02, 2023</div>
             <div className="privacy-body">
-              This privacy notice for {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'} (
+              This privacy notice for {process.env.REACT_APP_COUNTRY_NAME || 'Canada'} (
               <b>"Company"</b>, <b>"we"</b>, <b>"us"</b>, and <b>"our"</b>) describes how and why we
               might collect, store, use, and/or share ("
               <b>process</b>")your information when you use our services ("<b>Services</b>"), such
@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
               <p>
                 <b>What personal information do we process? </b>When you visit, use, or navigate our
                 Services, we may process personal information depending on how you interact with
-                {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'} and the Services, the choices you
+                {process.env.REACT_APP_COUNTRY_NAME || 'Canada'} and the Services, the choices you
                 make, and the products and features you use. Click<a href="#infocollect"> here</a>{' '}
                 to learn more.
               </p>
@@ -136,9 +136,9 @@ const PrivacyPolicy = () => {
                 applicable data protection laws.
               </p>
               <p>
-                Want to learn more about what {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}{' '}
-                does with any information we collect? Click <a href="#toc"> here</a> to review the
-                notice in full.
+                Want to learn more about what {process.env.REACT_APP_COUNTRY_NAME || 'Canada'} does
+                with any information we collect? Click <a href="#toc"> here</a> to review the notice
+                in full.
               </p>
             </div>
           </Col>
@@ -980,7 +980,7 @@ const PrivacyPolicy = () => {
                 is not considered to be "selling" of your personal information.
               </p>
               <p>
-                {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'} has not disclosed or sold any
+                {process.env.REACT_APP_COUNTRY_NAME || 'Canada'} has not disclosed or sold any
                 personal information to third parties for a business or commercial purpose in the
                 preceding twelve (12) months. CountryX will not sell personal information in the
                 future belonging to website visitors, users, and other consumers.
@@ -1116,7 +1116,7 @@ const PrivacyPolicy = () => {
                 Protection Officer (DPO) by email at address@CountryX.org, or by post to:
               </p>
               <p>
-                {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+                {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
                 <br />
                 1 United Nations Plaza
                 <br />
@@ -1125,7 +1125,7 @@ const PrivacyPolicy = () => {
               <p>
                 <b>
                   If you are a resident in the European Economic Area, the "data controller" of your
-                  personal information is {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}. United
+                  personal information is {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}. United
                   Nations Development Programme has appointed DPO to be its representative in the
                   EEA. You can contact them directly regarding the processing of your information by
                   United Nations Development Programme, or by post to:

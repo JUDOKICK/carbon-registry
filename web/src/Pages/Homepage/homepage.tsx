@@ -76,7 +76,7 @@ const Homepage = () => {
                       </div>
                     </div>
                     <div className="country-name">
-                      {process.env.REACT_APP_COUNTRY_NAME || 'CountryX'}
+                      {process.env.REACT_APP_COUNTRY_NAME || 'Canada'}
                     </div>
                   </div>
                 </div>
